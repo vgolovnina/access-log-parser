@@ -35,5 +35,20 @@ public class Statistics {
 
         return osStatistics;
     }
+    public static void main(String[] args) {
+        Statistics stats = new Statistics();
 
+        stats.addEntry("https://online.stepup.study/course_sessions/active", 200, "GoogleChrome/11.0 (Windows NT 10.0; Win64; x64)");
+        stats.addEntry("https://veronicagolovnina.com/home", 404, "Safari/18.0 (Macintosh; M1 Mac OS Sonoma 12_0)");
+
+        System.out.println("Существующие страницы:");
+        for (String page : stats.getExistingPages()) {
+            System.out.println(page);
+        }
+
+        System.out.println("Статистика операционных систем:");
+        for (Map.Entry<String, Double> entry : stats.getOSStatistics().entrySet()) {
+            System.out.printf("%s: %.2f%% ", entry.getKey(), entry.getValue() * 100);
+        }
+    }
 }
